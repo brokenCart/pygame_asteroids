@@ -1,5 +1,5 @@
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
 from logger import log_state
 
 
@@ -12,6 +12,9 @@ def main():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    clock = pygame.time.Clock()
+    dt = 0
+
     # Game loop
     while True:
         log_state()
@@ -22,6 +25,8 @@ def main():
 
         screen.fill("black")
         pygame.display.flip()
+
+        dt = clock.tick(FPS) / 1000 # To convert milliseconds to seconds
 
 
 if __name__ == "__main__":
